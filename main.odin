@@ -96,18 +96,18 @@ update_game :: proc() {
 }
 
 fix_ball_velocity_edge_cases:: proc() {
-	if ball.velocity.x < 0 && math.abs(ball.velocity.x) < 0.2 {
-		ball.velocity.x -= 0.2
+	if ball.velocity.x < 0 && math.abs(ball.velocity.x) < 0.5 {
+		ball.velocity.x -= 0.3
 	}
-	else if ball.velocity.x > 0 && math.abs(ball.velocity.x) < 0.2 {
-		ball.velocity.x += 0.2
+	else if ball.velocity.x > 0 && math.abs(ball.velocity.x) < 0.5 {
+		ball.velocity.x += 0.3
 	}
 
-	if ball.velocity.y < 0 && math.abs(ball.velocity.y) < 0.2 {
-		ball.velocity.y -= 0.2
+	if ball.velocity.y < 0 && math.abs(ball.velocity.y) < 0.5 {
+		ball.velocity.y -= 0.3
 	}
-	else if ball.velocity.y > 0 && math.abs(ball.velocity.y) < 0.2 {
-		ball.velocity.y += 0.2
+	else if ball.velocity.y > 0 && math.abs(ball.velocity.y) < 0.5 {
+		ball.velocity.y += 0.3
 	}
 }
 
