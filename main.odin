@@ -1,8 +1,8 @@
 package main
 
 import "core:fmt"
-import "core:math/rand"
 import "core:math"
+import "core:math/rand"
 import "core:strings"
 import rl "vendor:raylib"
 
@@ -11,8 +11,8 @@ PADDLE_WIDTH :: SCREEN_WIDTH / 69.
 BALL_WIDTH :: SCREEN_WIDTH / 69.
 BALL_HEIGHT :: SCREEN_WIDTH / 69.
 
-SCREEN_HEIGHT :: 600.
-SCREEN_WIDTH :: 1000.
+SCREEN_HEIGHT :: 800.
+SCREEN_WIDTH :: 1280.
 
 Ball :: struct {
 	rect:     rl.Rectangle,
@@ -35,6 +35,7 @@ BALL_SPEED: f32 = 6.
 main :: proc() {
 	rl.InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "pong")
 	rl.SetTargetFPS(60)
+	rl.ToggleFullscreen()
 	rl.HideCursor()
 
 	p1 = Paddle {
@@ -62,7 +63,7 @@ main :: proc() {
 			height = BALL_HEIGHT,
 		},
 		color = rl.GREEN,
-		velocity = {rand.float32_range(-1, 1), rand.float32_range(-1, 1)}
+		velocity = {rand.float32_range(-1, 1), rand.float32_range(-1, 1)},
 	}
 
 	for !rl.WindowShouldClose() {
@@ -95,18 +96,17 @@ update_game :: proc() {
 	simulate_p2()
 }
 
-fix_ball_velocity_edge_cases:: proc() {
+// puts lower bound on ball velocity
+fix_ball_velocity_edge_cases :: proc() {
 	if ball.velocity.x < 0 && math.abs(ball.velocity.x) < 0.5 {
 		ball.velocity.x -= 0.3
-	}
-	else if ball.velocity.x > 0 && math.abs(ball.velocity.x) < 0.5 {
+	} else if ball.velocity.x > 0 && math.abs(ball.velocity.x) < 0.5 {
 		ball.velocity.x += 0.3
 	}
 
 	if ball.velocity.y < 0 && math.abs(ball.velocity.y) < 0.5 {
 		ball.velocity.y -= 0.3
-	}
-	else if ball.velocity.y > 0 && math.abs(ball.velocity.y) < 0.5 {
+	} else if ball.velocity.y > 0 && math.abs(ball.velocity.y) < 0.5 {
 		ball.velocity.y += 0.3
 	}
 }
