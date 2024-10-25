@@ -208,11 +208,10 @@ draw_game :: proc() {
 		i32(p2.rect.height),
 		p2.color,
 	)
-	rl.DrawRectangle(
+	rl.DrawCircle(
 		i32(ball.rect.x),
 		i32(ball.rect.y),
-		i32(ball.rect.width),
-		i32(ball.rect.height),
+		ball.rect.width - 10,
 		ball.color,
 	)
 }
