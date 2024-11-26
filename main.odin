@@ -35,7 +35,7 @@ BALL_SPEED: f32 = 6.
 main :: proc() {
 	rl.InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "pong")
 	rl.SetTargetFPS(60)
-	rl.ToggleFullscreen()
+	//rl.ToggleFullscreen()
 	rl.HideCursor()
 
 	p1 = Paddle {
@@ -208,10 +208,5 @@ draw_game :: proc() {
 		i32(p2.rect.height),
 		p2.color,
 	)
-	rl.DrawCircle(
-		i32(ball.rect.x),
-		i32(ball.rect.y),
-		ball.rect.width - 10,
-		ball.color,
-	)
+	rl.DrawCircle(i32(ball.rect.x), i32(ball.rect.y), ball.rect.width - 10, ball.color)
 }
