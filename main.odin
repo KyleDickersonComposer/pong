@@ -11,8 +11,8 @@ PADDLE_WIDTH :: SCREEN_WIDTH / 69.
 BALL_WIDTH :: SCREEN_WIDTH / 69.
 BALL_HEIGHT :: SCREEN_WIDTH / 69.
 
-SCREEN_HEIGHT :: 800.
-SCREEN_WIDTH :: 1280.
+SCREEN_HEIGHT: f32 : 300 * 2
+SCREEN_WIDTH: f32 : 400 * 2
 
 Ball :: struct {
 	rect:     rl.Rectangle,
@@ -33,7 +33,7 @@ ball: Ball
 BALL_SPEED: f32 = 6.
 
 main :: proc() {
-	rl.InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "pong")
+	rl.InitWindow(i32(SCREEN_WIDTH), i32(SCREEN_HEIGHT), "pong")
 	rl.SetTargetFPS(60)
 	//rl.ToggleFullscreen()
 	rl.HideCursor()
@@ -116,16 +116,16 @@ display_score :: proc() {
 	p2_score := fmt.tprintf("%d", p2.score)
 	rl.DrawText(
 		strings.clone_to_cstring(p1_score),
-		SCREEN_WIDTH / 5 * 1,
-		SCREEN_WIDTH / 10,
+		i32(SCREEN_WIDTH) / 5 * 1,
+		i32(SCREEN_WIDTH) / 10,
 		20,
 		rl.GRAY,
 	)
 
 	rl.DrawText(
 		strings.clone_to_cstring(p2_score),
-		SCREEN_WIDTH / 5 * 4,
-		SCREEN_WIDTH / 10,
+		i32(SCREEN_WIDTH) / 5 * 4,
+		i32(SCREEN_WIDTH) / 10,
 		20,
 		rl.GRAY,
 	)
@@ -208,5 +208,5 @@ draw_game :: proc() {
 		i32(p2.rect.height),
 		p2.color,
 	)
-	rl.DrawCircle(i32(ball.rect.x), i32(ball.rect.y), ball.rect.width - 10, ball.color)
+	rl.DrawCircle(i32(ball.rect.x), i32(ball.rect.y), 7, ball.color)
 }
