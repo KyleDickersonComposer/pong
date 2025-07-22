@@ -159,14 +159,14 @@ check_score :: proc() {
 		ball.rect.y = SCREEN_HEIGHT / 2
 		ball.velocity = {rand.float32_range(-1, 1), rand.float32_range(-1, 1)}
 		BALL_SPEED = 6.
-		p1.score += 1
+		p2.score += 1
 	}
 	if ball.rect.x > SCREEN_WIDTH {
 		ball.rect.x = SCREEN_WIDTH / 2
 		ball.rect.y = SCREEN_HEIGHT / 2
 		ball.velocity = {rand.float32_range(-1, 1), rand.float32_range(-1, 1)}
 		BALL_SPEED = 6.
-		p2.score += 1
+		p1.score += 1
 	}
 
 }
